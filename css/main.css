@@ -1,0 +1,355 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: "PSU Stidti";
+  src: url("/fonts/psu-stidti-regular.woff2") format("woff2");
+}
+body {
+  font-family: "PSU Stidti";
+  line-height: 1.4;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+}
+
+button {
+  font-family: "PSU Stidti";
+}
+
+.default-padding, .content-padding {
+  width: calc(100% - (16px*2));
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.content-padding {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.button {
+  color: black;
+  background-color: white;
+  transition: 250ms;
+  border-radius: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-color: transparent;
+  border-style: solid;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: transparent;
+}
+
+.button-outline {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: 250ms;
+  border-radius: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-color: rgba(255, 255, 255, 0.35);
+  border-style: solid;
+  cursor: pointer;
+}
+.button-outline:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.card, .card-clickable {
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.card-clickable {
+  transition: 250ms;
+  cursor: pointer;
+}
+.card-clickable:hover {
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.navbar {
+  width: calc(100% - (16px));
+  padding-right: 0px;
+  background-color: white;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.35);
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+  position: fixed;
+}
+.navbar .logo {
+  padding-right: 8px;
+  font-size: 1.6em;
+  z-index: 6;
+}
+.navbar .logo img {
+  height: 100%;
+}
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+}
+.navbar ul li {
+  height: 38px;
+  padding: 0px 16px;
+  margin: 0px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: black;
+}
+.navbar ul li:first-child {
+  margin-left: 4px;
+}
+.navbar ul li:last-child {
+  margin-right: 4px;
+}
+
+.drawer {
+  display: flex;
+  align-items: center;
+  padding: 16px 16px;
+  height: 56px;
+}
+.drawer i {
+  z-index: 7;
+}
+.drawer .drawer-menu {
+  transition: 250ms;
+  background-color: white;
+  top: -128px;
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0);
+  right: 0;
+  width: 100%;
+  position: absolute;
+}
+.drawer .drawer-menu ul {
+  padding: 8px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+}
+.drawer .drawer-menu ul li {
+  color: transparent;
+}
+.drawer:hover .drawer-menu {
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.15);
+  top: 56px;
+}
+.drawer:hover .drawer-menu ul {
+  visibility: visible;
+}
+.drawer:hover .drawer-menu ul li {
+  color: black;
+}
+
+#footer {
+  margin-top: 0px;
+  padding-bottom: 24px;
+  background-color: #003c71;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#footer h2 {
+  color: white;
+  font-size: 1.6em;
+  margin-bottom: 16px;
+}
+#footer p {
+  color: white;
+  font-size: 1em;
+  line-height: 1.6;
+}
+#footer .contact {
+  padding-top: 24px;
+  height: calc(100% - 24px);
+}
+#footer .sitemap {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: left;
+}
+#footer .sitemap h2 {
+  color: white;
+}
+#footer .sitemap a {
+  text-decoration: none;
+  color: white;
+}
+#footer .sitemap .button {
+  color: black;
+  background-color: transparent;
+  transition: 250ms;
+  border-radius: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-color: transparent;
+  border-style: solid;
+  cursor: pointer;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#footer .sitemap .button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: transparent;
+}
+
+#credit {
+  background-color: #003c71;
+  color: white;
+  text-align: center;
+}
