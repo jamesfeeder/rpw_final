@@ -134,12 +134,17 @@ table {
   border-spacing: 0;
 }
 
+html,
 body {
+  height: 100%;
   font-family: "Roboto Slab";
   line-height: 1.4;
   font-size: 14px;
   box-sizing: border-box;
   background-color: #6d4d36;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 button {
@@ -152,7 +157,7 @@ button {
   margin-right: 16px;
 }
 
-.default-padding, .navbar, .content-padding, .content-section {
+.default-padding, footer, .navbar, .content-padding, .content-section {
   width: calc(100% - (16px*2));
   padding-left: 16px;
   padding-right: 16px;
@@ -390,10 +395,14 @@ button {
   visibility: visible;
 }
 
+footer {
+  background-color: #6d4d36;
+  bottom: 0px;
+}
+
 #footer {
   margin-top: 0px;
   padding-bottom: 24px;
-  background-color: #462f1e;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -480,9 +489,9 @@ button {
 }
 
 #credit {
-  background-color: #462f1e;
   color: #ebebd3;
   text-align: center;
+  padding: 8px;
 }
 
 .basket {
@@ -570,6 +579,7 @@ button {
   height: 48px;
   padding-right: 0;
   margin-right: 0;
+  cursor: default;
 }
 .basket-display a {
   width: 100%;
@@ -697,6 +707,11 @@ button {
   font-size: 1em;
   color: #ebebd3;
 }
+.content-section > div a {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
 
 .grid-container, .index-grid {
   padding-top: 24px;
@@ -768,16 +783,29 @@ button {
   filter: opacity(100%);
 }
 
+#products-title {
+  padding-top: calc(56px + 88px);
+}
+
 #check-out {
-  padding-top: calc(56px + 24px);
   background-color: #F2527D;
 }
 
-.check-out-grid {
-  padding-top: 24px;
-  width: 100%;
+#check-out-title {
+  padding-top: calc(56px + 24px);
+  background-color: #F2527D;
 }
-.check-out-grid .card, .check-out-grid .card-clickable {
+#check-out-title > div {
+  width: 100%;
+  max-width: 768px;
+}
+
+.check-out-section .check-out-confirm, .check-out-section .check-out-summary, .check-out-section .check-out-list {
+  width: 100%;
+  max-width: 768px;
+  margin-bottom: 16px;
+}
+.check-out-section .check-out-confirm .card, .check-out-section .check-out-summary .card, .check-out-section .check-out-list .card, .check-out-section .check-out-confirm .card-clickable, .check-out-section .check-out-summary .card-clickable, .check-out-section .check-out-list .card-clickable {
   height: 56px;
   max-width: 768px;
   display: flex;
@@ -785,27 +813,120 @@ button {
   align-items: center;
   justify-content: space-between;
 }
-.check-out-grid .card p, .check-out-grid .card-clickable p {
+
+.check-out-section {
+  padding-top: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.check-out-section .check-out-list .card, .check-out-section .check-out-list .card-clickable {
+  height: 88px;
+  margin-bottom: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.check-out-section .check-out-list .card > p, .check-out-section .check-out-list .card-clickable > p {
+  padding: 0px 16px;
+  font-size: 1.2em;
+}
+.check-out-section .check-out-list .card div, .check-out-section .check-out-list .card-clickable div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: end;
+}
+.check-out-section .check-out-list .card div p, .check-out-section .check-out-list .card-clickable div p {
+  flex: 3;
+  padding-left: 16px;
+  padding-bottom: 8px;
+}
+.check-out-section .check-out-list .card div .price-tag, .check-out-section .check-out-list .card-clickable div .price-tag {
+  flex: 1;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0px 16px;
+}
+.check-out-section .check-out-summary .card p, .check-out-section .check-out-summary .card-clickable p {
   padding: 0px 16px;
   flex: 3;
+  font-size: 1.6em;
 }
-.check-out-grid .card div, .check-out-grid .card-clickable div {
+.check-out-section .check-out-summary .card div, .check-out-section .check-out-summary .card-clickable div {
   flex: 2;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  text-align: end;
 }
-.check-out-grid .card div p, .check-out-grid .card-clickable div p {
+.check-out-section .check-out-summary .card div p, .check-out-section .check-out-summary .card-clickable div p {
   flex: 2;
   padding-left: 16px;
 }
-.check-out-grid .card div .price-tag, .check-out-grid .card-clickable div .price-tag {
+.check-out-section .check-out-summary .card div .price-tag, .check-out-section .check-out-summary .card-clickable div .price-tag {
   flex: 3;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding: 0px 16px;
+  font-size: 1.6em;
+}
+.check-out-section .check-out-confirm {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.check-out-section .check-out-confirm .card, .check-out-section .check-out-confirm .card-clickable {
+  color: red;
+  background-color: #6d4d36;
+  transition: 250ms;
+  border-radius: 0px;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-color: transparent;
+  border-style: solid;
+  cursor: pointer;
+  text-decoration: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: unset;
+}
+.check-out-section .check-out-confirm .card a, .check-out-section .check-out-confirm .card-clickable a {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  text-decoration: none;
+  color: #ebebd3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.check-out-section .check-out-confirm .card a i, .check-out-section .check-out-confirm .card-clickable a i {
+  margin-right: 8px;
+  color: #ebebd3;
+}
+.check-out-section .check-out-confirm .card a p, .check-out-section .check-out-confirm .card-clickable a p {
+  color: #ebebd3;
+}
+.check-out-section .check-out-confirm .card:hover, .check-out-section .check-out-confirm .card-clickable:hover {
+  background-color: #70F8BA;
+  border-color: transparent;
+}
+.check-out-section .check-out-confirm .card:hover a i, .check-out-section .check-out-confirm .card-clickable:hover a i {
+  color: #462f1e;
+}
+.check-out-section .check-out-confirm .card:hover a p, .check-out-section .check-out-confirm .card-clickable:hover a p {
+  color: #462f1e;
 }
 
 @media only screen and (min-width: 768px) {
@@ -854,10 +975,6 @@ button {
     gap: 24px;
   }
 
-  .index-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
   #footer {
     flex-direction: row;
     align-items: flex-start;
@@ -888,6 +1005,42 @@ button {
     padding-left: 8px;
     padding-right: 8px;
   }
+
+  .index-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .check-out-section .check-out-list .card, .check-out-section .check-out-list .card-clickable {
+    height: 56px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .check-out-section .check-out-list .card > p, .check-out-section .check-out-list .card-clickable > p {
+    padding: 0px 16px;
+    flex: 3;
+    font-size: 1.2em;
+  }
+  .check-out-section .check-out-list .card div, .check-out-section .check-out-list .card-clickable div {
+    width: unset;
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: end;
+  }
+  .check-out-section .check-out-list .card div p, .check-out-section .check-out-list .card-clickable div p {
+    flex: 2;
+    padding-bottom: 0px;
+  }
+  .check-out-section .check-out-list .card div .price-tag, .check-out-section .check-out-list .card-clickable div .price-tag {
+    flex: 3;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0px 16px;
+  }
 }
 @media only screen and (min-width: 1028px) {
   .index-grid {
@@ -901,7 +1054,7 @@ button {
     margin-right: 4vw;
   }
 
-  .default-padding, .content-padding, .navbar, .content-section {
+  .default-padding, .content-padding, .navbar, footer, .content-section {
     width: calc(100% - (4vw*2));
     padding-left: 4vw;
     padding-right: 4vw;
@@ -927,7 +1080,7 @@ button {
     margin-right: 8vw;
   }
 
-  .default-padding, .content-padding, .navbar, .content-section {
+  .default-padding, .content-padding, .navbar, footer, .content-section {
     width: calc(100% - (8vw*2));
     padding-left: 8vw;
     padding-right: 8vw;

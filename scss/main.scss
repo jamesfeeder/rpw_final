@@ -10,12 +10,17 @@ $beige65: #ebebd3b0;
 $red: #F2527D;
 $green: #70F8BA;
 // Typo Setting //
+html,
 body {
+    height: 100%;
     font-family: 'Roboto Slab';
     line-height: 1.4;
     font-size: 14px;
     box-sizing: border-box;
     background-color: $lightBrown;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 button {
@@ -227,10 +232,16 @@ $hoverBackgroundColor: rgba(0, 0, 0, 0.1)) {
     }
 }
 
+footer {
+    @extend .default-padding;
+    background-color: $lightBrown;
+    // position: absolute;
+    bottom: 0px;
+}
+
 #footer {
     margin-top: 0px;
     padding-bottom: 24px;
-    background-color: $brown;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -283,9 +294,9 @@ $hoverBackgroundColor: rgba(0, 0, 0, 0.1)) {
 }
 
 #credit {
-    background-color: $brown;
     color: $beige;
     text-align: center;
+    padding: 8px;
 }
 
 .basket {
@@ -329,6 +340,7 @@ $hoverBackgroundColor: rgba(0, 0, 0, 0.1)) {
     height: 48px;
     padding-right: 0;
     margin-right: 0;
+    cursor: default;
 }
 
 .hero {
@@ -387,6 +399,9 @@ $hoverBackgroundColor: rgba(0, 0, 0, 0.1)) {
         p {
             font-size: 1em;
             color: $beige;
+        }
+        a {
+            height: fit-content;
         }
     }
 }
@@ -461,14 +476,27 @@ $hoverBackgroundColor: rgba(0, 0, 0, 0.1)) {
     }
 }
 
+#products-title {
+    padding-top: calc(56px + 88px);
+}
+
 #check-out {
-    padding-top: calc(56px + 24px);
     background-color: $red;
 }
 
-.check-out-grid {
-    padding-top: 24px;
+#check-out-title {
+    padding-top: calc(56px + 24px);
+    background-color: $red;
+    &>div {
+        width: 100%;
+        max-width: 768px;
+    }
+}
+
+%check-out-list-shared-property {
     width: 100%;
+    max-width: 768px;
+    margin-bottom: 16px;
     .card {
         height: 56px;
         max-width: 768px;
@@ -476,25 +504,89 @@ $hoverBackgroundColor: rgba(0, 0, 0, 0.1)) {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        p {
-            padding: 0px 16px;
-            flex: 3;
-        }
-        div {
-            flex: 2;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            p {
-                flex: 2;
-                padding-left: 16px;
-            }
-            .price-tag {
-                flex: 3;
-                width: fit-content;
+    }
+}
+
+.check-out-section {
+    padding-top: 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .check-out-list {
+        @extend %check-out-list-shared-property;
+        .card {
+            height: 88px;
+            margin-bottom: 8px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            &>p {
                 padding: 0px 16px;
+                font-size: 1.2em;
             }
+            div {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                text-align: end;
+                p {
+                    flex: 3;
+                    padding-left: 16px;
+                    padding-bottom: 8px;
+                }
+                .price-tag {
+                    flex: 1;
+                    width: fit-content;
+                    padding: 0px 16px;
+                }
+            }
+        }
+    }
+    .check-out-summary {
+        @extend %check-out-list-shared-property;
+        .card {
+            p {
+                padding: 0px 16px;
+                flex: 3;
+                font-size: 1.6em;
+            }
+            div {
+                flex: 2;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                text-align: end;
+                p {
+                    flex: 2;
+                    padding-left: 16px;
+                }
+                .price-tag {
+                    flex: 3;
+                    width: fit-content;
+                    padding: 0px 16px;
+                    font-size: 1.6em;
+                }
+            }
+        }
+    }
+    .check-out-confirm {
+        @extend %check-out-list-shared-property;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        .card {
+            @include button($beige,
+            $brown,
+            $lightBrown,
+            $green);
+            width: fit-content;
+            max-width: unset;
         }
     }
 }
@@ -550,9 +642,6 @@ $hoverBackgroundColor: rgba(0, 0, 0, 0.1)) {
     .grid-container {
         gap: 24px;
     }
-    .index-grid {
-        grid-template-columns: 1fr 1fr;
-    }
     #footer {
         flex-direction: row;
         align-items: flex-start;
@@ -574,6 +663,42 @@ $hoverBackgroundColor: rgba(0, 0, 0, 0.1)) {
                     a {
                         padding-left: 8px;
                         padding-right: 8px;
+                    }
+                }
+            }
+        }
+    }
+    .index-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .check-out-section {
+        .check-out-list {
+            .card {
+                height: 56px;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                &>p {
+                    padding: 0px 16px;
+                    flex: 3;
+                    font-size: 1.2em;
+                }
+                div {
+                    width: unset;
+                    flex: 2;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    text-align: end;
+                    p {
+                        flex: 2;
+                        padding-bottom: 0px;
+                    }
+                    .price-tag {
+                        flex: 3;
+                        width: fit-content;
+                        padding: 0px 16px;
                     }
                 }
             }
